@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionList from '../QuestionList/QuestionList';
+import Range from '../../components/Range/Range';
 import './Quiz.css';
 
 const Quiz = () => {
@@ -7,7 +8,10 @@ const Quiz = () => {
     <section className='quiz'>
       <div className="quiz__left-side">
         <QuestionList>
-          
+          <Range/>
+          <Range/>
+          <Range/>
+          <Range/>
         </QuestionList>
       </div>
 
