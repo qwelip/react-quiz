@@ -1,0 +1,17 @@
+.question-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question-list__header {
+  margin: 0;
+  font-size: 26px;
+  font-weight: lighter;
+}
+
+.question-list__separator {
+  border-top: 2px solid rgba(0, 0, 0, 0.19);
+  width: 53%;
+  margin: 20px 0;
+}
