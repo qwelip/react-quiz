@@ -27,3 +27,13 @@
   background-size: cover;
   margin-left: 10px;
 }
+
+.flex-row {
+  max-width: 485px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-row:not(:last-child) {
+  margin-bottom: 30px;
+}

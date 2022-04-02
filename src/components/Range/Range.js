@@ -4,32 +4,36 @@ import Slider from '@mui/material/Slider';
 import { StyledEngineProvider } from '@mui/material/styles';
 import './Range.css';
 
-const Range = () => {
+const Range = ({title, measure, qty}) => {
 
   const marks = [
     {
       value: 0,
-      label: '0 шт',
+      label: `0 ${measure}`
     },
     {
-      value: 10,
-      label: '10 шт',
+      value: qty / 4,
+      label: `${Math.floor(qty / 3)} ${measure}`
     },
     {
-      value: 20,
-      label: '20 шт',
+      value: 2*qty / 4,
+      label: `${Math.floor(2*qty / 4)} ${measure}`
     },
     {
-      value: 30,
-      label: '30 шт',
+      value: 3*qty / 4,
+      label: `${Math.floor(3*qty / 4)} ${measure}`
     },
+    {
+      value: qty,
+      label: `${qty} ${measure}`
+    }
   ];
 
   return (
     <div className="range">
 
       <div className="range__header">
-        <h2 className='range__title'>Количество углов</h2>
+        <h2 className='range__title'>{title}</h2>
         <div className="range__counter">
           <p className='range__number'>100</p>
         </div>
@@ -41,7 +45,7 @@ const Range = () => {
             defaultValue={0} 
             step={1}
             min={0}
-            max={30}
+            max={qty}
             marks={marks}
           />
         </StyledEngineProvider>

@@ -2,6 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.question-list_visible {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
 }
 
 .question-list__header {
@@ -14,4 +26,10 @@
   border-top: 2px solid rgba(0, 0, 0, 0.19);
   width: 53%;
   margin: 20px 0;
+}
+
+.question-list__options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
