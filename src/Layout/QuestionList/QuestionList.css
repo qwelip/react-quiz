@@ -1,7 +1,4 @@
 .question-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   opacity: 0;
   visibility: hidden;
   position: absolute;
@@ -17,15 +14,22 @@
 }
 
 .question-list__header {
-  margin: 0;
+  position: relative;
+  margin: 0 0 44px 0;
   font-size: 26px;
   font-weight: lighter;
+  text-align: center;
 }
 
-.question-list__separator {
-  border-top: 2px solid rgba(0, 0, 0, 0.19);
-  width: 53%;
-  margin: 20px 0;
+.question-list__header:after {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  content: '';
+  width: 300px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.195);
 }
 
 .question-list__options {

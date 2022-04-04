@@ -9,7 +9,6 @@ const QuestionList = (props) => {
   return (
     <div className={ props.number === listPosition ? 'question-list question-list_visible' : 'question-list'}>
       <h1 className='question-list__header'>{props.title}</h1>
-      <div className="question-list__separator"></div>
       <div className="question-list__options">
         {props.children}
       </div>
