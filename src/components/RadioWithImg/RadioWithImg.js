@@ -1,10 +1,29 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOtdelka } from '../../store/state/state-action';
 import './RadioWithImg.css';
 
 const RadioWithImg = ({id, value, text, imgSrc, className, type, name}) => {
+
+  const {otdelka} = useSelector(state => state.state);
+  const dispatch = useDispatch();
+
+  const handleChange = () => {
+    console.log(value);
+    dispatch(setOtdelka(value));
+  }
+
   return (
     <>
-      <input id={id} className={className} type={type} name={name} value={value}/>
+      <input 
+        checked={value === otdelka}
+        onChange={handleChange}
+        id={id} 
+        className={className} 
+        type={type} 
+        name={name} 
+        value={value}
+      />
       <label className='label' htmlFor={id}>
         <div className="radio-img__container">
           <div className="radio-img__indicator"></div>

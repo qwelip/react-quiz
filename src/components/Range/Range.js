@@ -1,10 +1,19 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { StyledEngineProvider } from '@mui/material/styles';
+import { setRange } from '../../store/state/state-action';
 import './Range.css';
 
-const Range = ({title, measure, qty}) => {
+const Range = ({title, measure, qty, parametr}) => {
+
+  const {parametry} = useSelector(state => state.state);
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    dispatch(setRange([parametr, e.target.value]))
+  }
 
   const marks = [
     {
@@ -35,14 +44,16 @@ const Range = ({title, measure, qty}) => {
       <div className="range__header">
         <h2 className='range__title'>{title}</h2>
         <div className="range__counter">
-          <p className='range__number'>100</p>
+          <p className='range__number'>{parametry[parametr]}</p>
         </div>
       </div>
 
       <Box width={450}>
         <StyledEngineProvider injectFirst>
           <Slider 
-            defaultValue={0} 
+            onChange={handleChange}
+            value={parametry[parametr]}
+            defaultValue={parametry[parametr]} 
             step={1}
             min={0}
             max={qty}

@@ -7,6 +7,7 @@ import Range from '../../components/Range/Range';
 import RadioWithImg from '../../components/RadioWithImg/RadioWithImg';
 import Radio from '../../components/Radio/Radio';
 import Input from '../../components/Input/Input';
+import Progress from '../../components/Progress/Progress';
 
 import { goForward, goBack } from '../../store/state/state-action';
 
@@ -16,7 +17,8 @@ import plitka from '../../images/plitka.png';
 import shtukaturka from '../../images/shtukaturka.png';
 import personeIco from '../../images/persone-ico.png';
 import telIco from '../../images/tel-ico.png';
-import bullet from '../../images/bullet.ong';
+import bullet from '../../images/bullet.png';
+import doubleArrows from '../../images/double-arrows.png';
 
 const NUMBER_OF_SLIDES = 4;
 
@@ -27,8 +29,6 @@ const Quiz = () => {
 
   return (
     <section className='quiz'>
-      <button onClick={() => listPosition < NUMBER_OF_SLIDES && dispatch(goForward())} >+</button>
-      <button onClick={() => listPosition > 1 && dispatch(goBack())} >-</button>
       <div className="quiz__left-side">
         <QuestionList
           title="Укажите параметры вашего помещения"
@@ -38,21 +38,27 @@ const Quiz = () => {
             title="Количество углов"
             measure="шт."
             qty={40}
+            parametr="yglov"
           />
           <Range
             title="Колличество труб"
             measure="шт."
             qty={16}
+            parametr="trub"
+
           />
           <Range
             title="Площадь помещения"
             measure="кв/м"
             qty={100}
+            parametr="ploshad"
+
           />
           <Range
             title="Точек освещения"
             measure="шт."
             qty={16}
+            parametr="spots"
           />
         </QuestionList>
 
@@ -171,6 +177,22 @@ const Quiz = () => {
               <p className='quiz__bullet-text'>Профессиональные монтажники</p>
             </li>
           </ul>
+          <h2 className='quiz__right-title'>По окончании опроса получите подарок</h2>
+          <div className="quiz__progress">
+            <Progress/>
+          </div>
+          <div className="quiz__buttons">
+            <button className='quiz__btn'
+              onClick={() => listPosition > 1 && dispatch(goBack())} 
+            >
+              <img className='quiz__btn-img' src={doubleArrows} alt="Стрелка назад" />
+            </button>
+            <button className='quiz__btn'
+              onClick={() => listPosition < NUMBER_OF_SLIDES && dispatch(goForward())}
+            >
+              <p className='quiz__btn-text'>СЛЕДУЮЩИЙ ШАГ</p>
+            </button>
+          </div>
         </div>
       </div>
     </section>
