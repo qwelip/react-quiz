@@ -9,7 +9,6 @@ const RadioWithImg = ({id, value, text, imgSrc, className, type, name}) => {
   const dispatch = useDispatch();
 
   const handleChange = () => {
-    console.log(value);
     dispatch(setOtdelka(value));
   }
 

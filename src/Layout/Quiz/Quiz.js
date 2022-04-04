@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Quiz.css';
 
@@ -24,8 +24,76 @@ const NUMBER_OF_SLIDES = 4;
 
 const Quiz = () => {
 
+  const [btnState, setBtnState] = useState(0);
+
   const dispatch = useDispatch();
-  const {listPosition} = useSelector(store => store.state);
+  const {
+    listPosition, 
+    parametry, 
+    otdelka,
+    potoloc, 
+    contakty
+  } = useSelector(store => store.state);
+
+  const stateOfBtnNext = [
+    {
+      btnDisabled: true,
+      btnText: "ВВЕДИТЕ ДАННЫЕ",
+      btnStyle: "quiz__btn_warning"
+    },
+    {
+      btnDisabled: false,
+      btnText: "СЛЕДУЮЩИЙ ШАГ",
+      btnStyle: "quiz__btn_regular"
+    },
+    {
+      btnDisabled: false,
+      btnText: "ОТПРАВИТЬ",
+      btnStyle: "quiz__btn_success"
+    }
+  ]
+
+  const {btnDisabled, btnText, btnStyle} = stateOfBtnNext[btnState];
+
+  useEffect(() => {
+    switch(listPosition) {
+      case 1: {
+        if (parametry.yglov && parametry.trub && parametry.ploshad && parametry.spots) {
+          setBtnState(1)
+        } else {
+          setBtnState(0)
+        }
+        break
+      }
+      case 2: {
+        if (otdelka) {
+          setBtnState(1)
+        } else {
+          setBtnState(0)
+        }
+        break
+      }
+      case 3: {
+        if (potoloc) {
+          setBtnState(1)
+        } else {
+          setBtnState(0)
+        }
+        break
+      }
+      case 4: {
+        if (contakty.name && contakty.tel) {
+          setBtnState(2)
+        } else {
+          setBtnState(0)
+        }
+        break
+      }
+      default: {
+        return
+      }
+    }
+  }, [parametry, listPosition, otdelka, potoloc, contakty])
 
   return (
     <section className='quiz'>
@@ -182,15 +250,19 @@ const Quiz = () => {
             <Progress/>
           </div>
           <div className="quiz__buttons">
-            <button className='quiz__btn'
+            <button 
+              className='quiz__btn quiz__btn-back'
+              disabled={listPosition === 1}
               onClick={() => listPosition > 1 && dispatch(goBack())} 
             >
               <img className='quiz__btn-img' src={doubleArrows} alt="Стрелка назад" />
             </button>
-            <button className='quiz__btn'
+            <button 
+              className={`quiz__btn quiz__btn_text ${btnStyle}`}
+              disabled={btnDisabled}
               onClick={() => listPosition < NUMBER_OF_SLIDES && dispatch(goForward())}
             >
-              <p className='quiz__btn-text'>СЛЕДУЮЩИЙ ШАГ</p>
+              <p className='quiz__btn-text'>{btnText}</p>
             </button>
           </div>
         </div>

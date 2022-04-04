@@ -84,12 +84,35 @@
 
 .quiz__btn {
   border: unset;
-  background-color: #03A9F4;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease;
+  background-color: #03A9F4;
+}
+
+.quiz__btn-back:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.quiz__btn_regular {
+  background-color: #03A9F4;
+}
+
+.quiz__btn_success {
+  background-color: #40DB46 ;
+}
+
+.quiz__btn_warning {
+  background-color: #FF7B51;
+  cursor: not-allowed;
+}
+
+.quiz__btn_text {
+  min-width: 204px;
 }
 
 .quiz__btn:hover {
@@ -110,5 +133,6 @@
   color: white;
   font-weight: 500;
   font-size: 18px;
-  margin: 15px;
+  margin: 15px auto;
 }
+
