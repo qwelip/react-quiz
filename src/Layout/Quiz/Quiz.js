@@ -20,7 +20,7 @@ import telIco from '../../images/tel-ico.png';
 import bullet from '../../images/bullet.png';
 import doubleArrows from '../../images/double-arrows.png';
 
-const NUMBER_OF_SLIDES = 4;
+export const NUMBER_OF_SLIDES = 4;
 
 const Quiz = () => {
 
@@ -109,7 +109,7 @@ const Quiz = () => {
             parametr="yglov"
           />
           <Range
-            title="Колличество труб"
+            title="Количество труб"
             measure="шт."
             qty={16}
             parametr="trub"
@@ -245,10 +245,11 @@ const Quiz = () => {
               <p className='quiz__bullet-text'>Профессиональные монтажники</p>
             </li>
           </ul>
-          <h2 className='quiz__right-title'>По окончании опроса получите подарок</h2>
-          <div className="quiz__progress">
-            <Progress/>
-          </div>
+          <h2 className='quiz__right-title'>По окончании опроса получите подарок
+            <div className="quiz__progress">
+              <Progress/>
+            </div>
+          </h2>
           <div className="quiz__buttons">
             <button 
               className='quiz__btn quiz__btn-back'
